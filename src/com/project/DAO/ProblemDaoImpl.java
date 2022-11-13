@@ -19,10 +19,11 @@ public class ProblemDaoImpl implements ProblemDao {
 
 		try (Connection conn = DButil.provideConnection()) {
 
-			PreparedStatement ps = conn.prepareStatement("insert into Problems(pname,pcategory)values(?,?)");
+			PreparedStatement ps = conn.prepareStatement("insert into Problems(pname,pcategory,pstatus)values(?,?,?)");
 
 			ps.setString(1, problem.getPname());
 			ps.setString(2, problem.getPcategory());
+			ps.setString(3, problem.getPstatus());
 
 			int x = ps.executeUpdate();
 
@@ -49,16 +50,14 @@ public class ProblemDaoImpl implements ProblemDao {
 
 			while (rs.next()) {
 
-				if (rs.next()) {
-
 					int id = rs.getInt("pid");
 					String n = rs.getString("pname");
 					String c = rs.getString("pcategory");
-					String s = rs.getString("status");
+					String s = rs.getString("pstatus");
 
 					Problem problem = new Problem(id, n, c, s);
 					problems.add(problem);
-				}
+				
 
 			}
 		} catch (SQLException e) {
@@ -81,7 +80,7 @@ public class ProblemDaoImpl implements ProblemDao {
 
 		try (Connection conn = DButil.provideConnection()) {
 
-			PreparedStatement ps = conn.prepareStatement("update problems set status = ? where pid= ?");
+			PreparedStatement ps = conn.prepareStatement("update problems set pstatus = ? where pid= ?");
 			ps.setString(1, status);
 			ps.setInt(2, pid);
 

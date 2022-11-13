@@ -15,7 +15,15 @@ public class AllEngineerDetails {
 
 			List<Engineer> engineer = dao.getEngineersDetail();
 
-			engineer.forEach(s -> System.out.println(s));
+			engineer.forEach(e -> {
+				System.out.println("Engineer id is : " + e.getEngId());
+				System.out.println("Engineer name is : " + e.getEngName());
+				System.out.println("Engineer Username is : " + e.getEngUserName());
+				System.out.println("Engineer Password is : " + e.getEngPassword());
+				System.out.println("Engineer Category is : " + e.getEngCategory());
+				
+				System.out.println("======================================================");
+			});
 
 		} catch (EngineerException e) {
 			// TODO: handle exception

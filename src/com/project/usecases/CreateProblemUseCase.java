@@ -16,6 +16,9 @@ public class CreateProblemUseCase {
 
 		System.out.println("Enter Problem Category:");
 		String pcategory = sc.nextLine();
+		
+		System.out.println("Enter Problem Status:");
+		String pstatus = sc.nextLine();
 
 		ProblemDao dao = new ProblemDaoImpl();
 
@@ -23,6 +26,7 @@ public class CreateProblemUseCase {
 
 		problem.setPname(pname);
 		problem.setPcategory(pcategory);
+		problem.setPstatus(pstatus);
 
 		String result = dao.CreateProblem(problem);
 		System.out.println(result);

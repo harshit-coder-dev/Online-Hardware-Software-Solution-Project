@@ -18,7 +18,16 @@ public class AllEmployeeDetails {
 		try {
 			
 			List<Employee> employees=dao.getEmployeeDetails();
-			employees.forEach(s -> System.out.println(s));
+			employees.forEach(e -> {
+				System.out.println("Employee id is : " + e.getEmpID());
+				System.out.println("Employee name is : " + e.getEmpName());
+				System.out.println("Employee category is : " + e.getEmpUserName());
+				System.out.println("Employee status is : " + e.getEmpPassword());
+				
+				System.out.println("==============================================================");
+			}
+			
+					);
 			
 		} catch (EmployeeException e) {
 			// TODO: handle exception

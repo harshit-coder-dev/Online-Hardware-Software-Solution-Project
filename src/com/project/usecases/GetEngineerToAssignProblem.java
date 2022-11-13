@@ -13,7 +13,7 @@ public class GetEngineerToAssignProblem {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter the proble name");
+		System.out.println("Enter the problem name");
 		String pname = sc.nextLine();
 
 		EngineerDao dao = new EngineerDaoImpl();
@@ -22,7 +22,14 @@ public class GetEngineerToAssignProblem {
 
 			List<EngineerDTO> dtos = dao.getAlEnginnerAssignProblem(pname);
 
-			dtos.forEach(dto -> System.out.println(dto));
+			dtos.forEach(e -> {
+				System.out.println("Engineer id is : " + e.getEngid());
+				System.out.println("Engineer name is : " + e.getEngName());
+				System.out.println("Engineer category is : " + e.getCategory());
+				System.out.println("Problem name is : " + e.getPname());
+				
+				System.out.println("============================================");
+			});
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -146,24 +146,25 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try (Connection conn = DButil.provideConnection()) {
 
 			PreparedStatement ps = conn.prepareStatement(
-					"select e.engid,p.pid, e.engname,p.pname,e.engcategory,p.status from engineer e INNER JOIN problems p INNER JOIN employee_engineer ee ON e.engid=ee.reid AND p.pid=ee.rpid AND p.pname =?;");
+					"select e.engid,p.pid, e.engname,p.pname,e.engcategory,p.pstatus from engineer e INNER "
+					+ "JOIN problems p INNER JOIN employee_engineer ee "
+					+ "ON e.engid=ee.reid AND p.pid=ee.rpid AND p.pname =?;");
 			ps.setString(1, pname);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 
-				if (rs.next()) {
 
 					int eid = rs.getInt("engid");
 					int pid = rs.getInt("pid");
 					String n = rs.getString("engname");
 					String pn = rs.getString("pname");
 					String c = rs.getString("engcategory");
-					String s = rs.getString("status");
+					String s = rs.getString("pstatus");
 
 					ProblemPro problem = new ProblemPro(eid, pid, n, pn, c, s);
 					list.add(problem);
-				}
+				
 
 			}
 		} catch (SQLException e) {

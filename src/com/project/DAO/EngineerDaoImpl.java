@@ -87,7 +87,6 @@ public class EngineerDaoImpl implements EngineerDao {
 
 			while (rs.next()) {
 
-				if (rs.next()) {
 
 					int id = rs.getInt("EngId");
 					String n = rs.getString("EngName");
@@ -97,7 +96,7 @@ public class EngineerDaoImpl implements EngineerDao {
 
 					Engineer engineer = new Engineer(id, n, e, p, c);
 					engineers.add(engineer);
-				}
+				
 
 			}
 		} catch (SQLException e) {

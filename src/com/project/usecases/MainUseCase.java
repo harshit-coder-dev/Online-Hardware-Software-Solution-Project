@@ -27,7 +27,7 @@ public class MainUseCase {
 
 		while (true) {
 
-			System.out.println("Welcome to   Software and Hardware Online System Desingn by Harshit Awasthi ");
+			System.out.println("Welcome to  Software and Hardware Online System Designed by Harshit Awasthi ");
 			System.out.println("Enter Your Choice");
 			System.out.println("1.HOD services... ");
 			System.out.println("2.Engineer services...");
@@ -48,7 +48,7 @@ public class MainUseCase {
 
 				while (true) {
 					System.out.println("Welcome to HOD Admistration");
-					System.err.println("please login form use services...");
+					System.err.println("please login for using services...");
 
 					System.out.println("Enter admin Username:");
 					String username = sc.next();
@@ -69,8 +69,8 @@ public class MainUseCase {
 							System.out.println("please Enter your choice");
 							System.out.println("1.Appoint a new Enginner... ");
 							System.out.println("2.See All enginners working in department.... ");
-							System.out.println("3.terminate enginner from work.... ");
-							System.out.println("4.See all problems of raised by employee.... ");
+							System.out.println("3.Terminate enginner from work.... ");
+							System.out.println("4.See all problems raised by employee.... ");
 							System.out.println("5.Assign problem to Engineer.... ");
 							int number = sc.nextInt();
 
@@ -178,7 +178,14 @@ public class MainUseCase {
 									try {
 
 										List<Problem> problems = dao4.getAllProblemList();
-										problems.forEach(s -> System.out.println(s));
+										problems.forEach(e -> {
+											System.out.println("Problem id is : " + e.getPid());
+											System.out.println("Problem name is : " + e.getPname());
+											System.out.println("Problem category is : " + e.getPcategory());
+											System.out.println("Problem status is : " + e.getPstatus());
+											
+											System.out.println("==========================================");
+										});
 
 									} catch (ProblemException e) {
 										// TODO: handle exception
